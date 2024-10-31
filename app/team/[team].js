@@ -1,5 +1,6 @@
-import { Link } from "expo-router";
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import { View, Text, Image } from "react-native";
+import React from "react";
+import { Link, useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import TeamCard from "../../components/TeamCard";
 
@@ -21,7 +22,14 @@ const DATA = [
   },
 ];
 
-export default function HomeScreen() {
+const TeamDetail = () => {
+  const { team } = useLocalSearchParams();
+  const selectedTeam = DATA.filter(function (item) {
+    return item.name === team;
+  });
+
+  console.log(selectedTeam);
+
   return (
     <SafeAreaView
       style={{
@@ -32,30 +40,9 @@ export default function HomeScreen() {
         alignItems: "center",
       }}
     >
-      <FlatList
-        data={DATA}
-        renderItem={({ item }) => <TeamCard item={item} />}
-        keyExtractor={(item) => item.id}
-      />
+      <TeamCard item={selectedTeam[0]} />
     </SafeAreaView>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
-  },
-});
+export default TeamDetail;
