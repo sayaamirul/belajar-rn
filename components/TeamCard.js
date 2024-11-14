@@ -7,20 +7,20 @@ const TeamCard = ({ item }) => {
     <Link
       href={{
         pathname: "/team/[team]",
-        params: { team: item.name },
+        params: { team: item.id },
       }}
     >
-      <View>
+      <View className="p-4 m-2 bg-red-400 rounded-xl">
         <Image
+          className="rounded-xl"
           source={{
-            uri: item.logo,
+            uri: item.poster,
             height: 150,
             width: 150,
           }}
         />
-        <Text style={{ fontWeight: "bold" }}>
-          {item.name}+ {item.id}
-        </Text>
+        <Text className="text-center font-bold text-white">{item.title}</Text>
+        <Text className="text-center text-white">{item.overview}</Text>
       </View>
     </Link>
   );
