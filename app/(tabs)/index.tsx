@@ -3,6 +3,17 @@ import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import TeamCard from "../../components/TeamCard";
 
+const CATEGORIES = [
+  {
+    id: 1,
+    name: "Action",
+  },
+  {
+    id: 2,
+    name: "Animation",
+  },
+];
+
 const DATA = [
   {
     id: "1",
