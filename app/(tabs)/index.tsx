@@ -5,18 +5,39 @@ import TeamCard from "../../components/TeamCard";
 
 const CATEGORIES = [
   {
-    id: 1,
+    id: "1",
     name: "Action",
   },
   {
-    id: 2,
+    id: "2",
     name: "Animation",
+  },
+  {
+    id: "3",
+    name: "Sci-fi",
+  },
+  {
+    id: "4",
+    name: "Horror",
+  },
+  {
+    id: "5",
+    name: "Comedy",
+  },
+  {
+    id: "6",
+    name: "Mistery",
+  },
+  {
+    id: "6",
+    name: "Adventure",
   },
 ];
 
 const DATA = [
   {
     id: "1",
+    category_id: "1",
     title: "Hot Frosty (2024)",
     poster:
       "https://media.themoviedb.org/t/p/w600_and_h900_bestv2/iEh7c4tOZMmUQmfvpoRxPfY7tR3.jpg",
@@ -25,6 +46,7 @@ const DATA = [
   },
   {
     id: "2",
+    category_id: "3",
     title: "Gladiator II (2024)",
     poster:
       "https://media.themoviedb.org/t/p/w600_and_h900_bestv2/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg",
@@ -33,6 +55,7 @@ const DATA = [
   },
   {
     id: "3",
+    category_id: "5",
     title: "Arcane (2021)",
     poster:
       "https://media.themoviedb.org/t/p/w600_and_h900_bestv2/abf8tHznhSvl9BAElD2cQeRr7do.jpg",
@@ -43,15 +66,17 @@ const DATA = [
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView
-      style={{
-        backgroundColor: "white",
-        flex: 1,
-        // flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <SafeAreaView className="p-4">
+      <FlatList
+        data={CATEGORIES}
+        horizontal
+        renderItem={({ item }) => (
+          <Text className="m-2 border p-2 rounded-xl">{item.name}</Text>
+        )}
+        className="space-x-4"
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.id}
+      />
       <FlatList
         data={DATA}
         numColumns={2}
